@@ -1,8 +1,7 @@
 import tkinter as tk
-
-from ui import StepsApp  # Import the StepsApp class from ui.py
+from ui import SequencerApp  # Asegúrate de que la clase correcta esté importada
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = StepsApp(root)
+    app = SequencerApp(root)  # Asegúrate de usar la clase que corresponde
     root.mainloop()
