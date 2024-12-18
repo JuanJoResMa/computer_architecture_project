@@ -8,20 +8,20 @@ class SequencerApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Musical Note Sequencer")
-        self.root.geometry("800x600")  # Tamaño de la ventana
+        self.root.geometry("1000x800")  # Tamaño de la ventana
 
         self.notes = []
         self.port = None
 
         # Cargar la imagen de fondo
-        self.bg_image = Image.open("background.png")  # Ruta a tu imagen
+        self.bg_image = Image.open("background2.png")  # Ruta a tu imagen
         self.bg_image = self.bg_image.resize(
             # Ajustamos el tamaño de la imagen
-            (800, 600), Image.Resampling.LANCZOS)
+            (1000, 800), Image.Resampling.LANCZOS)
         self.bg_photo = ImageTk.PhotoImage(self.bg_image)
 
         # Crear un Canvas para mostrar la imagen de fondo
-        self.canvas = tk.Canvas(root, width=800, height=600)
+        self.canvas = tk.Canvas(root, width=1000, height=800)
         self.canvas.pack(fill="both", expand=True)
 
         # Añadir la imagen al canvas
@@ -29,8 +29,8 @@ class SequencerApp:
 
         # Crear un marco para los widgets (esto asegura que los botones estén encima)
         frame = tk.Frame(self.root, bg='white', bd=5, relief=tk.RAISED)
-        frame.place(relx=0.5, rely=0.5, anchor="center", width=600,
-                    height=450)  # Ajustamos el tamaño del marco
+        frame.place(relx=0.5, rely=0.5, anchor="center", width=315,
+                    height=600)  # Ajustamos el tamaño del marco
 
         # Crear los widgets
         self.label = tk.Label(

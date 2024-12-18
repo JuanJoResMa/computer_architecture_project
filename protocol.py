@@ -2,6 +2,12 @@ import serial
 import serial.tools.list_ports
 
 
+str_to_note = {
+    "C4": 0, "C#4": 1, "D4": 2, "D#4": 3, "E4": 4, "F4": 5, "F#4": 6, "G4": 7, "G#4": 8, "A4": 9, "A#4": 10, "B4": 11,
+    "C5": 12, "C#5": 13, "D5": 14, "D#5": 15, "E5": 16, "F5": 17, "F#5": 18, "G5": 19, "G#5": 20, "A5": 21, "A#5": 22, "B5": 23,
+    "C6": 24, "C#6": 25, "D6": 26, "D#6": 27, "E6": 28, "F6": 29, "F#6": 30, "G6": 31, "G#6": 32, "A6": 33, "A#6": 34, "B6": 34,
+}
+
 def list_available_ports():
     """List all available serial ports."""
     ports = serial.tools.list_ports.comports()
@@ -29,10 +35,12 @@ def send_strings_via_uart(strings, port='COM3', baudrate=38400):
         for string in strings:
             if string:
                 # Add a newline character to indicate the end of the string
-                data = string.strip() + '\n'
-                ser.write(data.encode('utf-8'))
+                str_data = string.strip()
+                note_data = str_to_note[str_data]
+                # ser.write(note_data)
+                ser.write(str_data.encode("utf-8"))
                 # Quitamos los saltos de línea extra al imprimir
-                print(f"Sent: {data.strip()}")
+                print(f"Sent: {str_data.strip()}")
 
         print("All strings sent successfully.")
     except serial.SerialException as e:
